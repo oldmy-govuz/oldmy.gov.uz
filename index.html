@@ -100,6 +100,52 @@ alert("Неверный PIN код");
 }
 
 </script>
+  <script>
+
+const documents = {
+
+"1": {
+pin: "1234",
+file: "https://drive.google.com/file/d/FILE_ID_1/view"
+},
+
+"2": {
+pin: "5678",
+file: "https://drive.google.com/file/d/FILE_ID_2/view"
+},
+
+"3": {
+pin: "9999",
+file: "https://drive.google.com/file/d/FILE_ID_3/view"
+}
+
+};
+
+function getDocID(){
+
+const params = new URLSearchParams(window.location.search);
+return params.get("doc");
+
+}
+
+function checkPIN(){
+
+const docID = getDocID();
+const input = document.getElementById("pinInput").value;
+
+if(documents[docID] && input === documents[docID].pin){
+
+window.location.href = documents[docID].file;
+
+}else{
+
+alert("Неверный PIN код");
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
